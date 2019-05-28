@@ -958,6 +958,7 @@ export default class ImageGallery extends React.Component {
   };
 
   _onThumbnailMouseOver = (event, index) => {
+    const {thumbnailOverDelay} = this.props;
     if (this._thumbnailMouseOverTimer) {
       window.clearTimeout(this._thumbnailMouseOverTimer);
       this._thumbnailMouseOverTimer = null;
@@ -965,7 +966,7 @@ export default class ImageGallery extends React.Component {
     this._thumbnailMouseOverTimer = window.setTimeout(() => {
       this.slideToIndex(index);
       this.pause();
-    }, this.props.thumbnailOverDelay);
+    }, thumbnailOverDelay);
   };
 
    _onThumbnailMouseLeave = () => {
