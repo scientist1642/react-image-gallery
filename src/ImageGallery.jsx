@@ -48,6 +48,7 @@ export default class ImageGallery extends React.Component {
     showIndex: PropTypes.bool,
     showBullets: PropTypes.bool,
     showThumbnails: PropTypes.bool,
+    thumbnailOverDelay: PropTypes.number,
     showPlayButton: PropTypes.bool,
     showFullscreenButton: PropTypes.bool,
     disableThumbnailScroll: PropTypes.bool,
@@ -92,6 +93,7 @@ export default class ImageGallery extends React.Component {
 
   static defaultProps = {
     items: [],
+    thumbnailOverDelay: 300,
     showNav: true,
     autoPlay: false,
     lazyLoad: false,
@@ -963,7 +965,7 @@ export default class ImageGallery extends React.Component {
     this._thumbnailMouseOverTimer = window.setTimeout(() => {
       this.slideToIndex(index);
       this.pause();
-    }, 300);
+    }, this.props.thumbnailOverDelay);
   };
 
    _onThumbnailMouseLeave = () => {
